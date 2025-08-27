@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natural Number Generator</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Natural Numbers</h1>
+      <div class="input-box">
+        <input
+          type="number"
+          id="limit"
+          placeholder="Enter a number (e.g., 50)"
+          min="1"
+        />
+        <button onclick="generateNumbers()">Generate</button>
+      </div>
+      <div class="result" id="result">Numbers will appear here...</div>
+    </div>
+
+    <script>
+      function generateNumbers() {
+        const limit = document.getElementById("limit").value;
+        const resultDiv = document.getElementById("result");
+
+        if (!limit || limit <= 0) {
+          resultDiv.innerHTML =
+            "<span style='color: var(--red);'>Please enter a valid positive number!</span>";
+          return;
+        }
+
+        let numbers = "";
+        for (let i = 1; i <= limit; i++) {
+          numbers += i + (i < limit ? ", " : "");
+        }
+        resultDiv.textContent = numbers;
+      }
+    </script>
+  </body>
+</html>
